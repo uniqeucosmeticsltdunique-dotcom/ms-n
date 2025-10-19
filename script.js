@@ -10,7 +10,7 @@ form.addEventListener("submit", function(event) {
   event.preventDefault();
   btn.value = "Sending...";
 
-  emailjs.send("service_ptof5sl", "template_mqbswr9", this)
+  emailjs.sendForm("service_ptof5sl", "template_mqbswr9", this)
     .then(() => {
       btn.value = "Send";
       status.innerText = "✅ Message sent successfully!";
@@ -27,3 +27,4 @@ passwordToggle.addEventListener("click", () => {
   passwordField.type = isPassword ? "text" : "password";
   passwordToggle.textContent = isPassword ? "🙈" : "👁";
 });
+
