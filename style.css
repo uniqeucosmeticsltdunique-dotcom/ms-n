@@ -1,0 +1,271 @@
+/* Color + layout tokens */
+:root{
+  --bg: #f4f7fb;
+  --panel: #ffffff;
+  --accent: #0c64b4;
+  --muted: #6b7280;
+  --success: #16a34a;
+  --danger: #dc2626;
+  --warning: #d97706;
+  --radius: 12px;
+  --maxw: 900px;
+}
+
+/* Reset / base */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--bg);
+  color: #0f172a;
+  line-height: 1.45;
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* Page container */
+.page {
+  width: 100%;
+  max-width: var(--maxw);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Generic panel (cards) */
+.panel {
+  background: var(--panel);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: 0 6px 20px rgba(12,38,63,0.06);
+  position: relative;
+}
+
+/* ---------- Notice / header ---------- */
+.notice {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+  background: #f0f8ff;
+  border: 1px solid #e3f0fb;
+  padding: 28px;
+}
+
+/* Inner content */
+.notice-inner {
+  max-width: 640px;
+}
+
+.notice-title {
+  margin: 0 0 8px 0;
+  font-size: 1.6rem;
+  color: var(--accent);
+  letter-spacing: 0.2px;
+}
+
+.notice-sub {
+  margin: 0 0 14px 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+/* Primary and link buttons used across UI */
+.primary-btn {
+  display: inline-block;
+  padding: 10px 18px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+.primary-btn:active { transform: translateY(1px); }
+
+.link-btn {
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  font-weight: 600;
+  padding: 8px 10px;
+  text-decoration: underline;
+}
+
+/* ---------- Top-right decorative square image ---------- */
+/* The image sits inside the notice panel (positioned absolute relative to panel) */
+.notice-graphic {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  pointer-events: none; /* decorative only */
+  z-index: 1;
+}
+.notice-graphic img {
+  width: 160px;
+  height: 160px;
+  border-radius: 0;      /* square corners */
+  object-fit: cover;
+  display: block;
+  box-shadow: 0 6px 20px rgba(12,38,63,0.08);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+/* Make sure notice content doesn't overlap badly with the image —
+   provide some extra right padding on large screens */
+@media (min-width: 760px) {
+  .notice { padding-right: 210px; } /* leaves room for the 160px image + gap */
+}
+
+/* ---------- Form panel ---------- */
+.form-panel {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: transparent;
+  padding: 0; /* form card has its own padding */
+}
+
+.form-card {
+  background: var(--panel);
+  padding: 24px;
+  margin-top: 12px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(12,38,63,0.06);
+  width: 100%;
+  max-width: 460px;
+}
+
+.form-title {
+  margin: 0 0 6px 0;
+  font-size: 1.2rem;
+  color: #0f172a;
+}
+
+.form-desc {
+  margin: 0 0 16px 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Fields */
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.label-text {
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #e6eef9;
+  background: #fbfdff;
+  outline: none;
+  font-size: 1rem;
+}
+input:focus {
+  box-shadow: 0 0 0 6px rgba(12,100,180,0.06);
+  border-color: rgba(12,100,180,0.15);
+}
+
+/* Password field with inline toggle button */
+.password-field {
+  position: relative;
+}
+#toggle-password {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 6px;
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+/* Actions row */
+.actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 12px;
+}
+
+/* Primary button tweaks */
+.primary-btn {
+  background: var(--accent);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+.primary-btn:hover { background: #094a85; }
+
+/* Link button */
+.link-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Status message */
+.status {
+  margin-top: 12px;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+/* Footer */
+.site-footer {
+  text-align: center;
+  padding: 12px;
+  background: transparent;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* Responsive: collapse notice graphic and stack panels on small screens */
+@media (max-width: 700px) {
+  .page { padding: 20px; }
+  .notice {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 18px;
+  }
+  /* make image part of flow (not absolute) or hide it */
+  .notice-graphic {
+    position: static;
+    margin-top: 12px;
+    pointer-events: auto;
+    display: block;
+  }
+  .notice-graphic img {
+    width: 120px;
+    height: 120px;
+    border-radius: 6px; /* small rounded corners on mobile */
+  }
+  .notice { padding-right: 18px; }
+  .form-card { margin-top: 12px; padding: 18px; }
+}
+
+/* Small visual polish */
+button:focus, input:focus { outline: none; box-shadow: none; }
